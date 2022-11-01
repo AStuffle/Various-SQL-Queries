@@ -1,0 +1,14 @@
+-- keeping some commonly used JQL just in case
+
+-- Main due tracking list
+project = "Business Optimization" AND assignee = 616d76f43e3753006f7a7cc1 AND status not in (Done, Cancelled, "On Hold", "Waiting on Others") and sprint in openSprints() and due <= endOfWeek(2) ORDER BY due ASC
+
+-- Monthly Sprint Roll-Over report for bulk editing of items
+assignee in (616d76f43e3753006f7a7cc1) AND project = BUSOP AND issuetype in (standardIssueTypes(), subTaskIssueTypes(), Task) AND status in ("In Progress", "To Do", "Pending Mgmt Review", "On Hold") AND sprint in openSprints() ORDER BY cf[10006] ASC, due ASC, created ASC
+
+-- Monthly Summary to help with writing EOM reports
+project = "Business Optimization" AND assignee = 616d76f43e3753006f7a7cc1 AND "Epic Link" != BUSOP-1222 AND resolved > endOfMonth(-2) AND resolved <= endOfMonth(-1) ORDER BY resolved ASC, due ASC
+
+-- Weekly Summary to help with writing the weekly report
+assignee in (616d76f43e3753006f7a7cc1, 5f4e32ca333edb004332de00, 557058:09f3509b-dd10-4d89-b52d-b0314e931032) AND project = "Business Optimization" AND status in (Done, Cancelled, "Done - Past Due") AND resolved >= "2022/09/19" AND resolved < "2022/09/23" ORDER BY resolved ASC, assignee ASC
+
