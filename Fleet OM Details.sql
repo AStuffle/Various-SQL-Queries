@@ -1,3 +1,5 @@
+-- PeopleSoft query that brings in OM details by asset
+
 SELECT 
   SUBSTR(A.PROJECT_ID,0,5) as AssetNumber, 
   A.PROJECT_ID as ProjectID, 
